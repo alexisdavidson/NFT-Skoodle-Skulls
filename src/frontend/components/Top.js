@@ -40,7 +40,7 @@ const Top = () => {
                         border: "3px solid white"
                     }}>
                         <h3>Items</h3>
-                        <h2>100</h2>
+                        <h2>4,000</h2>
                     </div>
                 </Col>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
