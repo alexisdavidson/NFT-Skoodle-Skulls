@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,12 +38,12 @@
 }
 
 h2 {
-  color: #80d554;
+  color: white;
 }
 
 .mycontent-left {
-  border-right: 1px solid #579c32;
+  border-right: 1px solid white;
 }
 .mycontent-top {
-  border-bottom: 1px solid #579c32;
+  border-bottom: 1px solid white;
 }

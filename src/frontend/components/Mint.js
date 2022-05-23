@@ -92,7 +92,7 @@ const Mint = ({ web3Handler, account, marketplace, nft }) => {
                         </Row>
                     </Row>
                     ) : (
-                        <Button onClick={web3Handler} variant="outline-warning" className="btn-lg" style={{
+                        <Button onClick={web3Handler} variant="outline-light" className="btn-lg" style={{
                             width: "50%"
                         }}>Connect Wallet</Button>
                     )}

@@ -21,10 +21,10 @@ const Navigation = ({ web3Handler, account }) => {
                         <div className="d-flex align-items-start" style={{
                             whiteSpace: "nowrap",
                             textOverflow: "ellipsis",
-                            color: "#80d554"
+                            color: "white"
                         }}>
-                            <a href="/" style={{ color: "#579c32", fontWeight: "bold", textDecoration: "none", paddingRight: "15px" }}>Home</a>
-                            <a href="#mint" style={{ color: "#80d554", fontWeight: "bold", textDecoration: "none", paddingRight: "15px" }}>Mint</a>
+                            <a href="/" style={{ color: "white", fontWeight: "bold", textDecoration: "none", paddingRight: "15px" }}>Home</a>
+                            <a href="#mint" style={{ color: "white", fontWeight: "bold", textDecoration: "none", paddingRight: "15px" }}>Mint</a>
                             
                             {/* <Nav.Link as={Link} to="/about" style={{ color: "#80d554", fontWeight: "bold"  }}>About</Nav.Link>
                             <Nav.Link as={Link} to="/best-moments" style={{ color: "#80d554", fontWeight: "bold"  }}>Best Moments</Nav.Link>
@@ -57,7 +57,7 @@ const Navigation = ({ web3Handler, account }) => {
 
                             </a>
                         ) : (
-                            <Button onClick={web3Handler} variant="outline-warning">Connect Wallet</Button>
+                            <Button onClick={web3Handler} variant="outline-light">Connect Wallet</Button>
                         )}
                     </div>
                 </Col>

@@ -27,7 +27,7 @@ const Top = () => {
                 </Col>
                 <Col className="col-12 col-lg-6">
                     <img src={skull} alt="Presentation image" className="rounded" style={{
-                            border: "20px solid #0d1730"
+                            border: "5px solid white"
                         }}/>
                 </Col>
             </Row>
@@ -36,7 +36,8 @@ const Top = () => {
             }}>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                     <div className="mx-4 py-4" style={{
-                        background: "#0d1730"
+                        background: "black",
+                        border: "3px solid white"
                     }}>
                         <h3>Items</h3>
                         <h2>100</h2>
@@ -44,7 +45,8 @@ const Top = () => {
                 </Col>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                     <div className="mx-4 py-4" style={{
-                        background: "#0d1730"
+                        background: "black",
+                        border: "3px solid white"
                     }}>
                         <h3>Owners</h3>
                         <h2>0</h2>
@@ -52,7 +54,8 @@ const Top = () => {
                 </Col>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                     <div className="mx-4 py-4" style={{
-                        background: "#0d1730"
+                        background: "black",
+                        border: "3px solid white"
                     }}>
                         <h3>Floor</h3>
                         <h2>0.000 ETH</h2>
@@ -60,7 +63,8 @@ const Top = () => {
                 </Col>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                     <div className="mx-4 py-4" style={{
-                        background: "#0d1730"
+                        background: "black",
+                        border: "3px solid white"
                     }}>
                         <h3>Volume Traded</h3>
                         <h2>0.000 ETH</h2>
@@ -72,22 +76,26 @@ const Top = () => {
             }}>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                     <img src={skull1} alt="Presentation image" className="rounded" style={{
-                            border: "20px solid #0d1730"
+                        background: "black",
+                        border: "3px solid white"
                         }}/>
                 </Col>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                     <img src={skull2} alt="Presentation image" className="rounded" style={{
-                            border: "20px solid #0d1730"
+                        background: "black",
+                        border: "3px solid white"
                         }}/>
                 </Col>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                     <img src={skull3} alt="Presentation image" className="rounded" style={{
-                            border: "20px solid #0d1730"
+                        background: "black",
+                        border: "3px solid white"
                         }}/>
                 </Col>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                     <img src={skull4} alt="Presentation image" className="rounded" style={{
-                            border: "20px solid #0d1730"
+                        background: "black",
+                        border: "3px solid white"
                         }}/>
                 </Col>
             </Row>

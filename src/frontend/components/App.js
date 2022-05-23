@@ -50,7 +50,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App" style={{
-        backgroundColor: "#090f25"
+        backgroundColor: "black"
       }}>
         <Container fluid="sm" className="pt-3">
           <Row>
@@ -66,7 +66,7 @@ function App() {
           </Row>
         </Container>
         <div style={{
-          backgroundColor: "#0d1730"
+          backgroundColor: "black"
         }}>
           <Container fluid="sm" className=" px-3 pt-3">
             <Footer />

@@ -14,11 +14,11 @@ const Footer = () => {
                         whiteSpace: "nowrap",
                         textOverflow: "ellipsis"
                     }}>
-                    <a href="/" style={{ color: "#80d554", fontWeight: "bold", textDecoration: "none" }}>Home</a>
+                    <a href="/" style={{ color: "white", fontWeight: "bold", textDecoration: "none" }}>Home</a>
                     <br />
-                    <a href="/" style={{ color: "#579c32", textDecoration: "none" }}>Terms & Conditions</a>
+                    <a href="/" style={{ color: "white", textDecoration: "none" }}>Terms & Conditions</a>
                     <br />
-                    <a href="https://ropsten.etherscan.io/address/0xcA28f8815adBedDdf1d877130c7f8F5f4d780CCF" style={{ color: "#579c32", textDecoration: "none" }}>Smart Contracts</a>
+                    <a href="https://ropsten.etherscan.io/address/0xcA28f8815adBedDdf1d877130c7f8F5f4d780CCF" style={{ color: "white", textDecoration: "none" }}>Smart Contracts</a>
                 </Row>
                 <Row className="mt-5">
                     <div style={{
@@ -50,7 +50,7 @@ const Footer = () => {
                     <p style={{
                         textAlign: "left",
                         fontSize: "18px",
-                        color: "#579c32"
+                        color: "white"
                     }}>
                         ©2022 Skoodle Skulls. All rights reserved.
                     </p>
