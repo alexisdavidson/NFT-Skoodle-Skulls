@@ -49,7 +49,7 @@ const Top = () => {
                         border: "3px solid white"
                     }}>
                         <h3>Owners</h3>
-                        <h2>0</h2>
+                        <h2>137</h2>
                     </div>
                 </Col>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
@@ -67,7 +67,7 @@ const Top = () => {
                         border: "3px solid white"
                     }}>
                         <h3>Volume Traded</h3>
-                        <h2>0.000 ETH</h2>
+                        <h2>2.518 ETH</h2>
                     </div>
                 </Col>
             </Row>
