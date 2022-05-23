@@ -57,8 +57,8 @@ const Top = () => {
                         background: "black",
                         border: "3px solid white"
                     }}>
-                        <h3>Floor</h3>
-                        <h2>0.000 ETH</h2>
+                        <h3>Mint Price</h3>
+                        <h2>0.07 ETH</h2>
                     </div>
                 </Col>
                 <Col className="col-12 col-lg-6 col-xl-3 mb-4">
