@@ -52,7 +52,7 @@ const Footer = () => {
                         fontSize: "18px",
                         color: "#579c32"
                     }}>
-                        ©2022 Slime Blocks. All rights reserved.
+                        ©2022 Skoodle Skulls. All rights reserved.
                     </p>
                 </Row>
             </Col>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
 import { Image, Row, Col, Card, Button, Badge } from 'react-bootstrap'
-import slime from './images/slime.png'
+import skull from './images/skull.png'
 import logo from './images/logo.png'
 
 const Mint = ({ web3Handler, account, marketplace, nft }) => {

@@ -1,12 +1,12 @@
 import { Image, Row, Col } from 'react-bootstrap'
-import slime from './images/slime.png'
+import skull from './images/skull.png'
 import logo from './images/logo.png'
 
 const Family = () => {
     return (
         <Row className="my-5 p-3">
             <Col>
-                <img src={slime} alt="Presentation image" className="rounded"/>
+                <img src={skull} alt="Presentation image" className="rounded"/>
             </Col>
             <Col className="text-light">
                 <Row className="my-4">
