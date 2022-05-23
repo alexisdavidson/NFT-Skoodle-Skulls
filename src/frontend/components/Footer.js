@@ -32,9 +32,9 @@ const Footer = () => {
                         <a href="https://discord.gg/" target="_blank" style={{ paddingRight: "15px" }}>
                             <Image src={icon_di} width="30" height="30" className="image"/>
                         </a>
-                        <a href="https://opensea.io/" target="_blank" style={{ paddingRight: "15px" }}>
+                        {/* <a href="https://opensea.io/" target="_blank" style={{ paddingRight: "15px" }}>
                             <Image src={icon_os} width="30" height="30" className="image"/>
-                        </a>
+                        </a> */}
                     </div>
                 </Row>
             </Col>

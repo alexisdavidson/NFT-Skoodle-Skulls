@@ -43,9 +43,9 @@ const Navigation = ({ web3Handler, account }) => {
                         <a href="https://discord.gg/" target="_blank" className="btn">
                             <Image src={icon_di} width="30" height="30" className="image"/>
                         </a>
-                        <a href="https://opensea.io/" target="_blank" className="btn">
+                        {/* <a href="https://opensea.io/" target="_blank" className="btn">
                             <Image src={icon_os} width="30" height="30" className="image"/>
-                        </a>
+                        </a> */}
                         {account ? (
                             <a
                                 href={`https://etherscan.io/address/${account}`}
