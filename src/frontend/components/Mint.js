@@ -35,6 +35,15 @@ const Mint = ({ web3Handler, account, marketplace, nft }) => {
         setLoading(false)
         setItems(items)
     }
+    
+    const mintNFT = async () => {
+        console.log("Mint nft...")
+        // get next token id (totalSupply())
+        // pass that in tokenUri(tokenId) to get the new TokenUri
+        // https://github.com/hashlips-lab/nft-erc721-collection/blob/476348125294f8e521f2c0e10a0e385c2150522f/smart-contract/test/index.ts
+        const uri = 'uri' // ipfs meta data URI
+        await(await nft.mint(uri)).wait()
+      }
 
     const buyMarketItem = async (item) => {
         await (await marketplace.purchaseItem(item.itemId, { value: item.totalPrice })).wait()
@@ -61,7 +70,7 @@ const Mint = ({ web3Handler, account, marketplace, nft }) => {
                     {account ? (
                     <Row className="g-0">
                         <Row className="g-0">
-                            <a href={`https://etherscan.io/address/${account}`}
+                            <a onClick={mintNFT}
                                 target="_blank"
                                 rel="noopener noreferrer">
                                 <Badge pill bg="light" className="btn-lg pt-3" text="dark" style={{
