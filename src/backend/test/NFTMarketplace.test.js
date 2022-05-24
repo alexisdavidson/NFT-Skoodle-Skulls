@@ -20,8 +20,8 @@ describe("NFTMarketplace", async function() {
 
     describe("Deployment", function() {
         it("Should track name and symbol of the nft collection", async function() {
-            expect(await nft.name()).to.equal("Linko NFT")
-            expect(await nft.symbol()).to.equal("LNK")
+            expect(await nft.name()).to.equal("Skoodle Skulls")
+            expect(await nft.symbol()).to.equal("SKS")
         })
         it("Should track feeAccount and feePercent of the marketplace", async function() {
             expect(await marketplace.feeAccount()).to.equal(deployer.address)
