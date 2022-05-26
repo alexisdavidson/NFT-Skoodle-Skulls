@@ -27,6 +27,7 @@ function App() {
   const [account, setAccount] = useState(null)
   const [nft, setNFT] = useState({})
   const [tokenCount, setTokenCount] = useState(0)
+  const [volumeTraded, setVolumeTraded] = useState(0)
 
   // MetaMask Login/Connect
   const web3Handler = async () => {
@@ -42,17 +43,18 @@ function App() {
   const loadContracts = async (signer) => {
     const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer)
     setNFT(nft)
-    setLoading(false)
-    loadTokenCount(nft)
+    loadStats(nft)
   }
   
-  const loadTokenCount = async (nft) => {
-    console.log("Get token count...")
+  const loadStats = async (nft) => {
+    console.log("Loading stats...")
     
     const tokenCountTemp = await nft.tokenCount()
-    
     console.log("Token count: " + tokenCountTemp)
+
     setTokenCount(tokenCountTemp)
+    setVolumeTraded('3.518 ETH')
+    setLoading(false)
 }
 
   return (
@@ -67,9 +69,9 @@ function App() {
                   <div>
                     <Top />
                     {loading == false ?
-                      <Stats tokenCount={tokenCount.toString()} />
+                      <Stats tokenCount={tokenCount.toString()} volumeTraded={volumeTraded.toString()} />
                     : 
-                      <Stats tokenCount={'?'} />
+                      <Stats tokenCount={'?'} volumeTraded={'?'} />
                     }
                     <Gallery />
                     <Mint web3Handler={web3Handler} nft={nft} account={account} />

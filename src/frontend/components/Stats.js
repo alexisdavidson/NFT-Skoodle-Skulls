@@ -1,6 +1,6 @@
 import { Row, Col } from 'react-bootstrap'
 
-const Stats = ({tokenCount}) => {
+const Stats = ({tokenCount, volumeTraded}) => {
 
     return (
         <Row className="p-3 text-light" style={{
@@ -20,7 +20,7 @@ const Stats = ({tokenCount}) => {
                     background: "black",
                     border: "3px solid white"
                 }}>
-                    <h3>Owners</h3>
+                    <h3>Skulls Owned</h3>
                     <h2>{ tokenCount }</h2>
                 </div>
             </Col>
@@ -39,7 +39,7 @@ const Stats = ({tokenCount}) => {
                     border: "3px solid white"
                 }}>
                     <h3>Volume Traded</h3>
-                    <h2>2.518 ETH</h2>
+                    <h2>{ volumeTraded }</h2>
                 </div>
             </Col>
         </Row>
