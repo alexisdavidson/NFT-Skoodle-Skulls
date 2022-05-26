@@ -29,7 +29,7 @@ contract NFT is ERC721URIStorage {
             : '';
     }
 
-    function _baseURI() internal view override returns (string memory) {
+    function _baseURI() internal pure override returns (string memory) {
         return "ipfs://QmZRw3YVp81waACc9AMg3c7bve3U4LZEBP4oDWeneRRn3D/";
     }
 }
