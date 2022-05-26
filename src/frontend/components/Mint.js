@@ -38,11 +38,7 @@ const Mint = ({ web3Handler, account, marketplace, nft }) => {
     
     const mintNFT = async () => {
         console.log("Mint nft...")
-        // get next token id (totalSupply())
-        // pass that in tokenUri(tokenId) to get the new TokenUri
-        // https://github.com/hashlips-lab/nft-erc721-collection/blob/476348125294f8e521f2c0e10a0e385c2150522f/smart-contract/test/index.ts
-        const uri = 'uri' // ipfs meta data URI
-        await(await nft.mint(uri)).wait()
+        await(await nft.mint()).wait()
       }
 
     const buyMarketItem = async (item) => {

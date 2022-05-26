@@ -12,10 +12,10 @@ contract NFT is ERC721URIStorage {
 
     constructor() ERC721("Skoodle Skulls", "SKS") {}
 
-    function mint(string memory _tokenURI) external returns(uint) {
+    function mint() external returns(uint) {
         tokenCount += 1;
         _safeMint(msg.sender, tokenCount);
-        _setTokenURI(tokenCount, _tokenURI);
+        _setTokenURI(tokenCount, tokenURI(tokenCount));
         return(tokenCount);
     }
 
@@ -27,5 +27,9 @@ contract NFT is ERC721URIStorage {
         return bytes(currentBaseURI).length > 0
             ? string(abi.encodePacked(currentBaseURI, Strings.toString(_tokenId), uriSuffix))
             : '';
+    }
+
+    function _baseURI() internal view override returns (string memory) {
+        return "ipfs://QmZRw3YVp81waACc9AMg3c7bve3U4LZEBP4oDWeneRRn3D/";
     }
 }
