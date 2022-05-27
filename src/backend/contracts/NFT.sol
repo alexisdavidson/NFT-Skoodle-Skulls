@@ -40,10 +40,14 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "ipfs://QmZRw3YVp81waACc9AMg3c7bve3U4LZEBP4oDWeneRRn3D/";
+        return "ipfs://QmNmBHVHMHt8kvT2VtPDjZ6sjGjyjJ5LBsr1DhnLvzTZss/";
+    }
+    
+    function baseTokenURI() public pure returns (string memory) {
+        return _baseURI();
     }
 
-     // Maintain flexibility to modify royalties recipient (could also add basis points).
+    // Maintain flexibility to modify royalties recipient (could also add basis points).
     function _setRoyalties(address newRecipient) internal {
         require(newRecipient != address(0), "Royalties: new recipient is the zero address");
         _recipient = newRecipient;
@@ -57,14 +61,18 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     function royaltyInfo(uint256 _tokenId, uint256 _salePrice) external view override
         returns (address receiver, uint256 royaltyAmount)
     {
-        return (_recipient, (_salePrice * 250) / 10000); // 2.5% Royalties
+        return (_recipient, (_salePrice * 500) / 10000); // 5% Royalties
     }
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, IERC165) returns (bool) {
         return (interfaceId == type(ERC721URIStorage).interfaceId || interfaceId == type(IERC2981).interfaceId || super.supportsInterface(interfaceId));
+    }    
+
+    function contractURI() public pure returns (string memory) {
+        return "ipfs://QmRQZFhYBFXmCWNqaVctQLYTczvPnYwyWqVTtPqB5RwApN/";
     }
 
-    function contractURI() public view returns (string memory) {
-        return "https://gateway.pinata.cloud/ipfs/QmR3cgbJw6jzbeR4Sv9cmMpSLja9kve2NY4uznoL4h3E1A";
+    function totalSupply() public view returns (uint256) {
+        return tokenCount;
     }
 }

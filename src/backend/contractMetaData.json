@@ -1,8 +1,8 @@
 {
-    "name": "OpenSea name of contract for testnet",
-    "description": "OpenSea testnet contract meta data description",
-    "image": "https://block-slimes.com/static/media/slime.4bc5697048a1e8ea5bbf.png",
-    "external_link": "https://block-slimes.com/",
-    "seller_fee_basis_points": 250,
-    "fee_recipient": "0x1e85F8DAd89e993A2c290B846F48B62B151da8af"
-  }
+  "name": "OpenSea name of contract for testnet",
+  "description": "OpenSea testnet contract meta data description",
+  "image": "https://dict.leo.org/img/leo/160x60/schriftzug-fc584c1c.png",
+  "external_link": "https://dict.leo.org/",
+  "seller_fee_basis_points": 250,
+  "fee_recipient": "0x1e85F8DAd89e993A2c290B846F48B62B151da8af"
+}
