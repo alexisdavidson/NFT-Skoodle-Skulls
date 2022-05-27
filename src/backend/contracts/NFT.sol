@@ -15,6 +15,7 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     
     address private _recipient;
 
+    // Optional: Set _recipient in constructor directly
     constructor() ERC721("Skoodle Skulls", "SKS")
     {
         total_supply = 4000;
@@ -56,6 +57,14 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     function royaltyInfo(uint256 _tokenId, uint256 _salePrice) external view override
         returns (address receiver, uint256 royaltyAmount)
     {
-        return (_recipient, (_salePrice * 1000) / 10000);
+        return (_recipient, (_salePrice * 250) / 10000); // 2.5% Royalties
+    }
+
+    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721, IERC165) returns (bool) {
+        return (interfaceId == type(ERC721URIStorage).interfaceId || interfaceId == type(IERC2981).interfaceId || super.supportsInterface(interfaceId));
+    }
+
+    function contractURI() public view returns (string memory) {
+        return "https://gateway.pinata.cloud/ipfs/QmR3cgbJw6jzbeR4Sv9cmMpSLja9kve2NY4uznoL4h3E1A";
     }
 }
