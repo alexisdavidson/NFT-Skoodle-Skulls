@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
+import "hardhat/console.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/interfaces/IERC2981.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
@@ -11,27 +12,61 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     string public uriSuffix = '.json';
 
     uint public tokenCount;
-    uint256 public total_supply;
+    uint256 public max_supply;
     
     address private _recipient;
 
-    // Optional: Set _recipient in constructor directly
-    constructor() ERC721("Skoodle Skulls", "SKS")
+    bool public presale = true; 
+    bool public whitelistMintEnabled = true;
+
+    address[] public whitelistedAddresses;
+
+    constructor(address recipient) ERC721("Skoodle Skulls", "SKS")
     {
-        total_supply = 4000;
-        _recipient = owner();
+        max_supply = 4000;
+        
+        if(recipient != address(recipient)) {
+            _recipient = owner();
+        }
+        else {
+            _recipient = recipient;
+        }
     }
 
-    function mint() external returns(uint) {
+    function mint() external payable returns(uint) {
+        // console.log('msg.value: ', msg.value);
+        // console.log('getPrice(): ', getPrice());
+        // console.log('msg.sender: ', msg.sender);
+        // console.log('owner(): ', owner());
+        require(msg.value >= getPrice(), "Not enough ETH sent; check price!");
+
         tokenCount += 1;
         _safeMint(msg.sender, tokenCount);
         _setTokenURI(tokenCount, tokenURI(tokenCount));
         return(tokenCount);
     }
 
+    function getPrice() view public returns(uint) {
+        if (msg.sender != owner()) {
+            if (whitelistMintEnabled == true && isWhitelisted(msg.sender)) { // 0.04 eth minting price for whitelisted adresses
+                return 0.04 ether;
+            }
+            else {
+                if (presale) { // 0.064 eth minting price for presale
+                    return 0.064 ether;
+                }
+                else {
+                    return 0.07 ether; // 0.07 eth minting price for public sale
+                }
+            }
+        }
+
+        return 0 ether; // No minting price for owner
+    }
+
     function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
         require(_exists(_tokenId), 'ERC721Metadata: URI query for nonexistent token');
-        require(_tokenId >= 1 && _tokenId <= total_supply, "Metadata: URI query for nonexistent token");
+        require(_tokenId >= 1 && _tokenId <= max_supply, "Metadata: URI query for nonexistent token");
 
         string memory currentBaseURI = _baseURI();
         return bytes(currentBaseURI).length > 0
@@ -74,5 +109,27 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
 
     function totalSupply() public view returns (uint256) {
         return tokenCount;
+    }
+
+    function setPresaleEnabled(bool _state) public onlyOwner {
+        presale = _state;
+    }
+
+    function setWhitelistMintEnabled(bool _state) public onlyOwner {
+        whitelistMintEnabled = _state;
+    }
+
+    function whitelistUsers(address[] calldata _users) public onlyOwner {
+        delete whitelistedAddresses;
+        whitelistedAddresses = _users;
+    }
+
+    function isWhitelisted(address _user) public view returns (bool) {
+        for (uint i = 0; i < whitelistedAddresses.length; i++) {
+            if (whitelistedAddresses[i] == _user) {
+                return true;
+            }
+        }
+        return false;
     }
 }

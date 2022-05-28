@@ -6,7 +6,7 @@ const fromWei = (num) => ethers.utils.formatEther(num)
 describe("NFTMarketplace", async function() {
     let deployer, addr1, addr2, nft, marketplace
     let feePercent = 1
-    let URI = "ipfs://QmZRw3YVp81waACc9AMg3c7bve3U4LZEBP4oDWeneRRn3D/"
+    let URI = "ipfs://QmNmBHVHMHt8kvT2VtPDjZ6sjGjyjJ5LBsr1DhnLvzTZss/"
     let uriSuffix = '.json';
 
     beforeEach(async function() {
@@ -16,7 +16,7 @@ describe("NFTMarketplace", async function() {
         // Get signers
         [deployer, addr1, addr2] = await ethers.getSigners();
         // Deploy contracts
-        nft = await NFT.deploy();
+        nft = await NFT.deploy('0x1e85F8DAd89e993A2c290B846F48B62B151da8af');
         marketplace = await Marketplace.deploy(feePercent);
     });
 
@@ -34,22 +34,44 @@ describe("NFTMarketplace", async function() {
     describe("Minting NFTs", function() {
         it("Should track each minted NFT", async function() {
             // addr1 mints an nft
-            await nft.connect(addr1).mint();
+            let priceInWei = await nft.connect(addr1).getPrice();
+            await nft.connect(addr1).mint({ value: priceInWei });
             expect(await nft.tokenCount()).to.equal(1);
             expect(await nft.balanceOf(addr1.address)).to.equal(1);
             expect(await nft.tokenURI(1)).to.equal(URI + 1 + uriSuffix);
             // addr2 mints an nft
-            await nft.connect(addr2).mint();
+            priceInWei = await nft.connect(addr2).getPrice();
+            await nft.connect(addr2).mint({ value: priceInWei });
             expect(await nft.tokenCount()).to.equal(2);
             expect(await nft.balanceOf(addr2.address)).to.equal(1);
             expect(await nft.tokenURI(2)).to.equal(URI + 2 + uriSuffix);
         })
     })
 
+    describe("Get Price", function() {
+        it("Should track of price depending on owner, presale, whitelist and public sale", async function() {
+            // owner price 
+            let priceInWei = await nft.connect(deployer).getPrice();
+            expect(priceInWei).to.equal(toWei(0));
+            // pre sale
+            priceInWei = await nft.connect(addr2).getPrice();
+            expect(priceInWei).to.equal(toWei(0.064));
+            // public sale
+            await nft.connect(deployer).setPresaleEnabled(false);
+            priceInWei = await nft.connect(addr2).getPrice();
+            expect(priceInWei).to.equal(toWei(0.07));
+            // whitelist
+            await nft.connect(deployer).whitelistUsers([addr1.getAddress()]);
+            priceInWei = await nft.connect(addr1).getPrice();
+            expect(priceInWei).to.equal(toWei(0.04));
+        })
+    })
+
     describe("Making marketplace items", function() {
         beforeEach(async function() {
             // addr1 mints an nft
-            await nft.connect(addr1).mint();
+            let priceInWei = await nft.connect(addr1).getPrice();
+            await nft.connect(addr1).mint({ value: priceInWei });
             // addr1 approves marketplace to spend nft
             await nft.connect(addr1).setApprovalForAll(marketplace.address, true);
         });
@@ -91,7 +113,8 @@ describe("NFTMarketplace", async function() {
         let totalPriceInWei
         beforeEach(async function() {
             // addr1 mints an nft
-            await nft.connect(addr1).mint();
+            let priceInWei = await nft.connect(addr1).getPrice();
+            await nft.connect(addr1).mint({ value: priceInWei });
             // addr1 approves marketplace to spend nft
             await nft.connect(addr1).setApprovalForAll(marketplace.address, true);
             // addr1 makes their nft a marketplace item

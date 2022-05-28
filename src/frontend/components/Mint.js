@@ -38,7 +38,9 @@ const Mint = ({ web3Handler, account, marketplace, nft }) => {
     
     const mintNFT = async () => {
         console.log("Mint nft...")
-        await(await nft.mint()).wait()
+        let priceInWei = await nft.getPrice();
+        console.log("Price: " + priceInWei + " wei");
+        await(await nft.mint({ value: priceInWei })).wait()
       }
 
     const buyMarketItem = async (item) => {
