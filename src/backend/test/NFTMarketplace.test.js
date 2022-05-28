@@ -55,11 +55,11 @@ describe("NFTMarketplace", async function() {
             expect(priceInWei).to.equal(toWei(0));
             // pre sale
             priceInWei = await nft.connect(addr2).getPrice();
-            expect(priceInWei).to.equal(toWei(0.064));
+            expect(priceInWei).to.equal(toWei(0.056));
             // public sale
             await nft.connect(deployer).setPresaleEnabled(false);
             priceInWei = await nft.connect(addr2).getPrice();
-            expect(priceInWei).to.equal(toWei(0.07));
+            expect(priceInWei).to.equal(toWei(0.065));
             // whitelist
             await nft.connect(deployer).whitelistUsers([addr1.getAddress()]);
             priceInWei = await nft.connect(addr1).getPrice();

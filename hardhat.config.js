@@ -15,6 +15,10 @@ module.exports = {
      rinkeby: {
        url: process.env.REACT_APP_API_URL_RINKEBY,
        accounts: ['0x' + process.env.REACT_APP_PRIVATE_KEY_RINKEBY]
+     },
+     matic: {
+       url: process.env.REACT_APP_API_URL_MATIC,
+       accounts: [process.env.REACT_APP_PRIVATE_KEY_MATIC]
      }
   },
   paths: {

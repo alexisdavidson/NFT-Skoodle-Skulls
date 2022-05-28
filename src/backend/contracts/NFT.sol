@@ -34,10 +34,6 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     }
 
     function mint() external payable returns(uint) {
-        // console.log('msg.value: ', msg.value);
-        // console.log('getPrice(): ', getPrice());
-        // console.log('msg.sender: ', msg.sender);
-        // console.log('owner(): ', owner());
         require(msg.value >= getPrice(), "Not enough ETH sent; check price!");
 
         tokenCount += 1;
@@ -52,11 +48,11 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
                 return 0.04 ether;
             }
             else {
-                if (presale) { // 0.064 eth minting price for presale
-                    return 0.064 ether;
+                if (presale) { // 0.056 eth minting price for presale
+                    return 0.056 ether;
                 }
                 else {
-                    return 0.07 ether; // 0.07 eth minting price for public sale
+                    return 0.065 ether; // 0.065 eth minting price for public sale
                 }
             }
         }
@@ -104,7 +100,7 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     }    
 
     function contractURI() public pure returns (string memory) {
-        return "ipfs://QmRQZFhYBFXmCWNqaVctQLYTczvPnYwyWqVTtPqB5RwApN/";
+        return "ipfs://QmeQoTY3YdVf1JfX6ppaWh2vSSDQ3jVMFEvht4LBVD6uDG/";
     }
 
     function totalSupply() public view returns (uint256) {

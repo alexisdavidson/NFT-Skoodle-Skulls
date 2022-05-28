@@ -1,3 +1,10 @@
+// Before mainnet deploying:
+// Set recipient address at NFT.deploy('0x1E016c6466F124A5626d94b91b13A4D0FeeF9623');
+// Update Contract URI metadata (contractMetaData.json) 
+// Discuss initial state of presale and whitelist to avoid gas fees upon changing it
+
+// IQ: set owner upon deploying?
+
 async function main() {
 
   const [deployer] = await ethers.getSigners();
