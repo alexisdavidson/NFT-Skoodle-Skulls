@@ -100,7 +100,7 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     }    
 
     function contractURI() public pure returns (string memory) {
-        return "ipfs://QmeQoTY3YdVf1JfX6ppaWh2vSSDQ3jVMFEvht4LBVD6uDG/";
+        return "ipfs://QmTA41cxgi62ik86g3e1m8sbgvPus7SLZwoNjFrCDUGvxq/";
     }
 
     function totalSupply() public view returns (uint256) {

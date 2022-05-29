@@ -23,11 +23,11 @@ import NFTAbi from '../contractsData/NFT.json'
 import NFTAddress from '../contractsData/NFT-address.json'
  
 function App() {
-  const [loading, setLoading] = useState(true)
   const [account, setAccount] = useState(null)
   const [nft, setNFT] = useState({})
-  const [tokenCount, setTokenCount] = useState(0)
-  const [volumeTraded, setVolumeTraded] = useState(0)
+  const [price, setPrice] = useState(0)
+  const [stats, setStats] = useState([])
+  const [loading, setLoading] = useState(true)
 
   // MetaMask Login/Connect
   const web3Handler = async () => {
@@ -40,22 +40,47 @@ function App() {
     loadContracts(signer)
   }
 
+  const fetchOpenseaStats = async () => {
+      const urlApi = 'https://testnets-api.opensea.io/api/v1' // testnet
+      // const urlApi = 'https://api.opensea.io/api/v1' // mainnet
+      const nameCollection = 'skoodle-skulls-v3'
+      const finalUrl = `${urlApi}/collection/${nameCollection}`
+      console.log("Sending api call for stats to " + finalUrl)
+
+      let stats = await fetch(finalUrl)
+      .then((res) => res.json())
+      .then((res) => {
+        return res.collection.stats
+      })
+      .catch((e) => {
+        console.error(e)
+        console.error('Could not talk to OpenSea')
+        return null
+      })
+
+      console.log("Finished loading stats")
+      console.log(stats)
+
+      setStats(stats)
+      setLoading(false)
+  }
+    
+  const loadPrice = async(nft) => {
+    console.log("Setting price...")
+    const priceToSet = ethers.utils.formatEther(await nft.getPrice())
+    setPrice(priceToSet)
+    console.log("Set price to " + priceToSet)
+}
+
   const loadContracts = async (signer) => {
     const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer)
     setNFT(nft)
-    loadStats(nft)
+    loadPrice(nft)
   }
   
-  const loadStats = async (nft) => {
-    console.log("Loading stats...")
-    
-    const tokenCountTemp = await nft.tokenCount()
-    console.log("Token count: " + tokenCountTemp)
-
-    setTokenCount(tokenCountTemp)
-    setVolumeTraded('3.518 ETH')
-    setLoading(false)
-}
+  useEffect(() => {
+    fetchOpenseaStats()
+  }, [])
 
   return (
     <BrowserRouter>
@@ -68,13 +93,9 @@ function App() {
                 <Navigation web3Handler={web3Handler} account={account} />
                   <div>
                     <Top />
-                    {loading == false ?
-                      <Stats tokenCount={tokenCount.toString()} volumeTraded={volumeTraded.toString()} />
-                    : 
-                      <Stats tokenCount={'?'} volumeTraded={'?'} />
-                    }
+                    <Stats stats={stats} />
                     <Gallery />
-                    <Mint web3Handler={web3Handler} nft={nft} account={account} />
+                    <Mint web3Handler={web3Handler} nft={nft} account={account} price={price} stats={stats} />
                   </div>
               </Col>
             </Row>

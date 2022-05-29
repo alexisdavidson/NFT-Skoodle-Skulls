@@ -1,62 +1,12 @@
-import { useState, useEffect } from 'react'
-import { ethers } from "ethers"
-import { Image, Row, Col, Card, Button, Badge } from 'react-bootstrap'
-import skull from './images/skull.png'
-import logo from './images/logo.png'
+import { Row, Button, Badge } from 'react-bootstrap'
 
-const Mint = ({ web3Handler, account, marketplace, nft }) => {
-    const [loading, setLoading] = useState(false)
-    const [items, setItems] = useState([])
-    const loadMarketplaceItems = async () => {
-        // // Load all unsold items
-        // const itemCount = await marketplace.itemCount()
-        // let items = []
-        // for (let i = 1; i <= itemCount; i++) {
-        //     const item = await marketplace.items(i)
-        //     if (!item.sold) {
-        //         // get uri url from nft contract
-        //         const uri = await nft.tokenURI(item.tokenId)
-        //         // use uri to fetch the nft metadata stored on ipfs 
-        //         const response = await fetch(uri)
-        //         const metadata = await response.json()
-        //         // get total price of item (item price + fee)
-        //         const totalPrice = await marketplace.getTotalPrice(item.itemId)
-        //         // Add item to items array
-        //         items.push({
-        //             totalPrice,
-        //             itemId: item.itemId,
-        //             seller: item.seller,
-        //             name: metadata.name,
-        //             description: metadata.description,
-        //             image: metadata.image
-        //         })
-        //     }
-        // }
-        // setLoading(false)
-        // setItems(items)
-    }
-    
+const Mint = ({ web3Handler, account, nft, price, stats }) => {
     const mintNFT = async () => {
         console.log("Mint nft...")
         let priceInWei = await nft.getPrice();
         console.log("Price: " + priceInWei + " wei");
         await(await nft.mint({ value: priceInWei })).wait()
       }
-
-    const buyMarketItem = async (item) => {
-        await (await marketplace.purchaseItem(item.itemId, { value: item.totalPrice })).wait()
-        loadMarketplaceItems()
-    }
-
-    useEffect(() => {
-        // loadMarketplaceItems()
-    }, [])
-
-    if (loading) return (
-        <main style={{ padding: "1rem 0" }}>
-        <h2>Loading...</h2>
-        </main>
-    )
 
     return (
         <Row>
@@ -79,7 +29,7 @@ const Mint = ({ web3Handler, account, marketplace, nft }) => {
                                     }}>Buy</p>
                                     <p style={{
                                         fontSize: "20px"
-                                    }}>0.06 ETH</p>
+                                    }}>{price != null ? price.toString() : '?'} ETH</p>
                                 </Badge>
                             </a>
                         </Row>
@@ -95,7 +45,12 @@ const Mint = ({ web3Handler, account, marketplace, nft }) => {
                             <a><Badge className="p-3" bg="dark" style={{
                                 minWidth:"200px",
                                 fontSize: "20px"
-                            }}>42 / 100</Badge></a>
+                            }}>
+                                {
+                                    stats == null || stats.length == 0 ? '?'
+                                    :
+                                    stats.count
+                                } / 100</Badge></a>
                         </Row>
                     </Row>
                     ) : (
