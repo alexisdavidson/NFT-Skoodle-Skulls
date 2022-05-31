@@ -43,7 +43,7 @@ function App() {
   const fetchOpenseaStats = async () => {
       const urlApi = 'https://testnets-api.opensea.io/api/v1' // testnet
       // const urlApi = 'https://api.opensea.io/api/v1' // mainnet
-      const nameCollection = 'skoodle-skulls-v3'
+      const nameCollection = 'skoodle-skulls'
       const finalUrl = `${urlApi}/collection/${nameCollection}`
       console.log("Sending api call for stats to " + finalUrl)
 
