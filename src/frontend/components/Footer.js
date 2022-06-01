@@ -26,10 +26,10 @@ const Footer = () => {
                             whiteSpace: "nowrap",
                             textOverflow: "ellipsis"
                         }}>
-                        <a href="https://twitter.com/" target="_blank" style={{ paddingRight: "15px" }}>
+                        <a href="https://twitter.com/SkullLabNFT1" target="_blank" style={{ paddingRight: "15px" }}>
                             <Image src={icon_tw} width="30" height="30" className="image"/>
                         </a>
-                        <a href="https://discord.gg/" target="_blank" style={{ paddingRight: "15px" }}>
+                        <a href="https://discord.gg/3RSKCnaU" target="_blank" style={{ paddingRight: "15px" }}>
                             <Image src={icon_di} width="30" height="30" className="image"/>
                         </a>
                         {/* <a href="https://opensea.io/" target="_blank" style={{ paddingRight: "15px" }}>
