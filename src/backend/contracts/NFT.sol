@@ -44,15 +44,15 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
 
     function getPrice() view public returns(uint) {
         if (msg.sender != owner()) {
-            if (whitelistMintEnabled == true && isWhitelisted(msg.sender)) { // 0.04 eth minting price for whitelisted adresses
-                return 0.04 ether;
+            if (whitelistMintEnabled == true && isWhitelisted(msg.sender)) { // 0.02 eth minting price for whitelisted adresses
+                return 0.02 ether;
             }
             else {
-                if (presale) { // 0.056 eth minting price for presale
-                    return 0.056 ether;
+                if (presale) { // 0.04 eth minting price for presale
+                    return 0.04 ether;
                 }
                 else {
-                    return 0.065 ether; // 0.065 eth minting price for public sale
+                    return 0.05 ether; // 0.05 eth minting price for public sale
                 }
             }
         }
