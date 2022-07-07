@@ -17,9 +17,12 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     address private _recipient;
 
     bool public presale = true; 
-    bool public whitelistMintEnabled = true;
+    
+    bool public whitelistMintEnabled = true; // whitelist for price reduction
+    bool public whitelistFreeMintEnabled = true; // whitelist for free mint
 
     address[] public whitelistedAddresses;
+    address[] public whitelistedAddressesFreeMint;
 
     constructor(address recipient) ERC721("Skoodle Skulls", "SKS")
     {
@@ -44,7 +47,10 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
 
     function getPrice() view public returns(uint) {
         if (msg.sender != owner()) {
-            if (whitelistMintEnabled == true && isWhitelisted(msg.sender)) { // 0.02 eth minting price for whitelisted adresses
+            if (whitelistFreeMintEnabled == true && isWhitelistedFreeMint(msg.sender)) { // free mint for whitelisted adresses for free mint
+                return 0 ether;
+            }
+            else if (whitelistMintEnabled == true && isWhitelisted(msg.sender)) { // 0.02 eth minting price for whitelisted adresses
                 return 0.02 ether;
             }
             else {
@@ -111,8 +117,14 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
         presale = _state;
     }
 
+    // Whitelist for price reduction and white list for free mint
+
     function setWhitelistMintEnabled(bool _state) public onlyOwner {
         whitelistMintEnabled = _state;
+    }
+
+    function setWhitelistFreeMintEnabled(bool _state) public onlyOwner {
+        whitelistFreeMintEnabled = _state;
     }
 
     function whitelistUsers(address[] calldata _users) public onlyOwner {
@@ -123,6 +135,20 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     function isWhitelisted(address _user) public view returns (bool) {
         for (uint i = 0; i < whitelistedAddresses.length; i++) {
             if (whitelistedAddresses[i] == _user) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function whitelistUsersFreeMint(address[] calldata _users) public onlyOwner {
+        delete whitelistedAddressesFreeMint;
+        whitelistedAddressesFreeMint = _users;
+    }
+
+    function isWhitelistedFreeMint(address _user) public view returns (bool) {
+        for (uint i = 0; i < whitelistedAddressesFreeMint.length; i++) {
+            if (whitelistedAddressesFreeMint[i] == _user) {
                 return true;
             }
         }
