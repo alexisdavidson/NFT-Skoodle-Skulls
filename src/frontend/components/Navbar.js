@@ -25,6 +25,7 @@ const Navigation = ({ web3Handler, account }) => {
                         }}>
                             <a href="/" style={{ color: "white", fontWeight: "bold", textDecoration: "none", paddingRight: "15px" }}>Home</a>
                             <a href="#mint" style={{ color: "white", fontWeight: "bold", textDecoration: "none", paddingRight: "15px" }}>Mint</a>
+                            <a href="#roadmap" style={{ color: "white", fontWeight: "bold", textDecoration: "none", paddingRight: "15px" }}>Roadmap</a>
                             
                             {/* <Nav.Link as={Link} to="/about" style={{ color: "#80d554", fontWeight: "bold"  }}>About</Nav.Link>
                             <Nav.Link as={Link} to="/best-moments" style={{ color: "#80d554", fontWeight: "bold"  }}>Best Moments</Nav.Link>

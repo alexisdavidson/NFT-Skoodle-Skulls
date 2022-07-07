@@ -10,25 +10,25 @@ const Gallery = () => {
                         fontSize: "25px"
         }}>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
-                <img src={skull1} alt="Presentation image" className="rounded" style={{
+                <img src={skull1} alt="Skull 1" className="rounded" style={{
                     background: "black",
                     border: "3px solid white"
                     }}/>
             </Col>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
-                <img src={skull2} alt="Presentation image" className="rounded" style={{
+                <img src={skull2} alt="Skull 2" className="rounded" style={{
                     background: "black",
                     border: "3px solid white"
                     }}/>
             </Col>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
-                <img src={skull3} alt="Presentation image" className="rounded" style={{
+                <img src={skull3} alt="Skull 3" className="rounded" style={{
                     background: "black",
                     border: "3px solid white"
                     }}/>
             </Col>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
-                <img src={skull4} alt="Presentation image" className="rounded" style={{
+                <img src={skull4} alt="Skull 4" className="rounded" style={{
                     background: "black",
                     border: "3px solid white"
                     }}/>

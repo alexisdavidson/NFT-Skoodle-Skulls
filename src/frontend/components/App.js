@@ -8,6 +8,7 @@ import Navigation from './Navbar';
 import Top from './Top';
 import Stats from './Stats';
 import Gallery from './Gallery';
+import Roadmap from './Roadmap';
 import About from './About';
 import Family from './Family';
 import BestMoments from './BestMoments';
@@ -96,6 +97,7 @@ function App() {
                     <Stats stats={stats} />
                     <Gallery />
                     <Mint web3Handler={web3Handler} nft={nft} account={account} price={price} stats={stats} />
+                    <Roadmap />
                   </div>
               </Col>
             </Row>
