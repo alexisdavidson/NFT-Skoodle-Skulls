@@ -1,11 +1,8 @@
 import { Image, Row, Col } from 'react-bootstrap'
-import skull from './images/skull.png'
-import logo from './images/logo.png'
 import ReactFaq from "react-faq-component";
 
 const Faq = () => {
     const data = {
-        // title: "FAQ (How it works)",
         rows: [
             {
                 title: <span style={{fontWeight: "bold"}}>What is NFT?</span>,
