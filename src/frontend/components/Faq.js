@@ -1,26 +1,54 @@
 import { Image, Row, Col } from 'react-bootstrap'
 import skull from './images/skull.png'
 import logo from './images/logo.png'
+import ReactFaq from "react-faq-component";
 
 const Faq = () => {
+    const data = {
+        // title: "FAQ (How it works)",
+        rows: [
+            {
+                title: <span style={{fontWeight: "bold"}}>What is NFT?</span>,
+                content: `NFT is a unique digital identifier that cannot be copied, substituted, or subdivided, that is recorded in a blockchain`,
+            },
+            {
+                title: <span style={{fontWeight: "bold"}}>What is skoodle?</span>,
+                content:
+                    "Skoodle is 4000 skull art NFT collection. Every skoodle is unique.",
+            },
+            {
+                title: <span style={{fontWeight: "bold"}}>Why buy skoodle?</span>,
+                content: `Skoodle NFT is a long journey. First 500 skoodle holders can get whitelist for stage two skulllab project. Stage one 4000 skoodle holders will randomly get free mint chances for future project.
+                <br/>There will be more giveaway and amazing content coming up in the future.`,
+            },
+            {
+                title: <span style={{fontWeight: "bold"}}>What is the price</span>,
+                content: "0.02 for WL holders, 0.04 for presale, 0.05 for public sale. Each person can mint up to 5 skoodles.",
+            },
+        ],
+    };
+
+    const styles = {
+        bgColor: 'black',
+        titleTextColor: "white",
+        rowTitleColor: "white",
+        rowContentColor: 'white',
+        // arrowColor: "white",
+        textAlign: "left"
+    };
+    
+    const config = {
+        // animate: true,
+        // arrowIcon: "V",
+        // tabFocus: true
+    };
+
     return (
         <Row className="my-5 p-3">
-            <Col>
-                <img src={skull} alt="Presentation image" className="rounded"/>
-            </Col>
             <Col className="text-light">
-                <Row className="my-4">
-                    <Image src={logo} className="d-flex align-items-start" style={{
-                        width: "300px"
-                    }}/>
-                </Row>
-                <Row className="my-5">
-                    <p style={{
-                        textAlign: "left",
-                        fontSize: "20px"
-                    }}>
-                        100 unique collectible Slimes with proof of ownership stored on the Ethereum blockchain. Featured on New York Times, CNBC, and Bloomberg. Block Slimes are "Non-Fungible Tokens" on Ethereum, and each Block Slime was created as an ERC-721 standard token, that powers most digital art and collectibles.
-                    </p>
+                <h1 id="mint">FAQ</h1>
+                <Row style={{textAlign: "left"}}>
+                    <ReactFaq data={data} styles={styles} config={config} />
                 </Row>
             </Col>
         </Row>

@@ -98,6 +98,7 @@ function App() {
                     <Gallery />
                     <Mint web3Handler={web3Handler} nft={nft} account={account} price={price} stats={stats} />
                     <Roadmap />
+                    <Faq />
                   </div>
               </Col>
             </Row>
