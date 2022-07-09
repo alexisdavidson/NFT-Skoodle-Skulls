@@ -21,12 +21,12 @@ const Stats = ({stats}) => {
                     border: "3px solid white"
                 }}>
                     <h3>Skulls Minted</h3>
-                    <h2>
-                        {
+                    <h2>?
+                        {/* {
                             stats == null || stats.length == 0 ? '?'
                             :
                             stats.count
-                        }
+                        } */}
                      </h2>
                 </div>
             </Col>
@@ -36,12 +36,12 @@ const Stats = ({stats}) => {
                     border: "3px solid white"
                 }}>
                     <h3>Owners</h3>
-                    <h2>
-                        {
+                    <h2>?
+                        {/* {
                             stats == null || stats.length == 0 ? '?'
                             :
                             stats.num_owners
-                        }
+                        } */}
                      </h2>
                     {/* <h3>Floor</h3>
                     <h2>

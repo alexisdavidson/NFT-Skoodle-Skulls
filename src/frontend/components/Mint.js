@@ -12,7 +12,8 @@ const Mint = ({ web3Handler, account, nft, price, stats }) => {
         <Row>
             <Row className="p-3 text-light g-0">
                 <h1 className="mb-5" id="mint">PUBLIC MINT</h1>
-                <div style={{
+                <p>Coming Soon...</p>
+                {/* <div style={{
                     textAlign: "center"
                 }}>
                     {account ? (
@@ -61,7 +62,7 @@ const Mint = ({ web3Handler, account, nft, price, stats }) => {
                 </div>
                 <p className="mt-5">
                     Please make sure that you are connected to the right network (Ethereum Mainnet). Please note: Once you make the purchase, you cannot undo it.
-                </p>
+                </p> */}
             </Row>
         </Row>
         // <div className="flex justify-center">
