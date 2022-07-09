@@ -13,6 +13,8 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
 
     uint public tokenCount;
     uint256 public max_supply;
+
+    uint public amountMintPerAccount = 5;
     
     address private _recipient;
 
@@ -41,7 +43,7 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
 
     function mint() external payable returns(uint) {
         require(msg.value >= getPrice(), "Not enough ETH sent; check price!");
-        require(balanceOf(msg.sender) < 5, 'Each address may only mint 5 NFTs!');
+        require(balanceOf(msg.sender) < amountMintPerAccount, 'Each address may only mint x NFTs!');
 
         tokenCount += 1;
         _safeMint(msg.sender, tokenCount);
@@ -127,6 +129,10 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
 
     function setPresaleEnabled(bool _state) public onlyOwner {
         presale = _state;
+    }
+
+    function setAmountMintPerAccount(uint _amountMintPerAccount) public onlyOwner {
+        amountMintPerAccount = _amountMintPerAccount;
     }
 
 
