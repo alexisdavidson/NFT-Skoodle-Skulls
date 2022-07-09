@@ -22,7 +22,7 @@ const Faq = () => {
                 <br/>There will be more giveaway and amazing content coming up in the future.`,
             },
             {
-                title: <span style={{fontWeight: "bold"}}>What is the price</span>,
+                title: <span style={{fontWeight: "bold"}}>What is the price?</span>,
                 content: "0.02 for WL holders, 0.04 for presale, 0.05 for public sale. Each person can mint up to 5 skoodles.",
             },
         ],
