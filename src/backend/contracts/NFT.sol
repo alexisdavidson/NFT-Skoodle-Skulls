@@ -17,12 +17,15 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     address private _recipient;
 
     bool public presale = true; 
-    
+
     bool public whitelistMintEnabled = true; // whitelist for price reduction
     bool public whitelistFreeMintEnabled = true; // whitelist for free mint
 
     address[] public whitelistedAddresses;
     address[] public whitelistedAddressesFreeMint;
+
+    bool private revealed = false;
+    string private revealUrl = "https://ipfs.io/ipfs/.json";
 
     constructor(address recipient) ERC721("Skoodle Skulls", "SKS")
     {
@@ -38,6 +41,7 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
 
     function mint() external payable returns(uint) {
         require(msg.value >= getPrice(), "Not enough ETH sent; check price!");
+        require(balanceOf(msg.sender) < 5, 'Each address may only mint 5 NFTs!');
 
         tokenCount += 1;
         _safeMint(msg.sender, tokenCount);
@@ -70,6 +74,10 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
         require(_exists(_tokenId), 'ERC721Metadata: URI query for nonexistent token');
         require(_tokenId >= 1 && _tokenId <= max_supply, "Metadata: URI query for nonexistent token");
 
+        if (revealed == false) {
+            return revealUrl;
+        }
+
         string memory currentBaseURI = _baseURI();
         return bytes(currentBaseURI).length > 0
             ? string(abi.encodePacked(currentBaseURI, Strings.toString(_tokenId), uriSuffix))
@@ -82,6 +90,10 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     
     function baseTokenURI() public pure returns (string memory) {
         return _baseURI();
+    }
+
+    function revealCollection() public {
+        revealed = true;
     }
 
     // Maintain flexibility to modify royalties recipient (could also add basis points).
@@ -116,6 +128,7 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     function setPresaleEnabled(bool _state) public onlyOwner {
         presale = _state;
     }
+
 
     // Whitelist for price reduction and white list for free mint
 
