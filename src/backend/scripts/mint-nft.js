@@ -11,7 +11,7 @@ const contract = require(__dirname + "/../../frontend/contractsData/NFT.json")
 
 console.log(JSON.stringify(contract.abi))
 
-const contractAddress = "0x6e26Fa4719a8857df99ddd3024aE6b858386B44D"
+const contractAddress = "0xB99462a753c933347cED850B1450b16ffCA7C742"
 
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 

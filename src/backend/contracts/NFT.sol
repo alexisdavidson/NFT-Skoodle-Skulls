@@ -27,7 +27,7 @@ contract NFT is ERC721URIStorage, Ownable, IERC2981 {
     address[] public whitelistedAddressesFreeMint;
 
     bool private revealed = false;
-    string private revealUrl = "https://ipfs.io/ipfs/.json";
+    string private revealUrl = "ipfs://QmTfq5RWpX3k6dqbu2nGNc533YV1NhrB93imRh1WDnUhWB";
 
     constructor(address recipient) ERC721("Skoodle Skulls", "SKS")
     {
