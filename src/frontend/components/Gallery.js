@@ -11,25 +11,21 @@ const Gallery = () => {
         }}>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                 <img src={skull1} alt="Skull 1" className="rounded" style={{
-                    background: "black",
                     border: "3px solid white"
                     }}/>
             </Col>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                 <img src={skull2} alt="Skull 2" className="rounded" style={{
-                    background: "black",
                     border: "3px solid white"
                     }}/>
             </Col>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                 <img src={skull3} alt="Skull 3" className="rounded" style={{
-                    background: "black",
                     border: "3px solid white"
                     }}/>
             </Col>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                 <img src={skull4} alt="Skull 4" className="rounded" style={{
-                    background: "black",
                     border: "3px solid white"
                     }}/>
             </Col>

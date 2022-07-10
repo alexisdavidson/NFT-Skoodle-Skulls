@@ -85,9 +85,7 @@ function App() {
 
   return (
     <BrowserRouter>
-        <div className="App" style={{
-          backgroundColor: "black"
-        }}>
+        <div className="App" >
           <Container fluid="sm" className="pt-3">
             <Row>
               <Col>
@@ -103,9 +101,7 @@ function App() {
               </Col>
             </Row>
           </Container>
-          <div style={{
-            backgroundColor: "black"
-          }}>
+          <div>
             <Container fluid="sm" className=" px-3 pt-3">
               <Footer />
             </Container>

@@ -8,7 +8,6 @@ const Stats = ({stats}) => {
         }}>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                 <div className="mx-4 py-4" style={{
-                    background: "black",
                     border: "3px solid white"
                 }}>
                     <h3>Items</h3>
@@ -17,7 +16,6 @@ const Stats = ({stats}) => {
             </Col>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                 <div className="mx-4 py-4" style={{
-                    background: "black",
                     border: "3px solid white"
                 }}>
                     <h3>Skulls Minted</h3>
@@ -32,7 +30,6 @@ const Stats = ({stats}) => {
             </Col>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                 <div className="mx-4 py-4" style={{
-                    background: "black",
                     border: "3px solid white"
                 }}>
                     <h3>Owners</h3>
@@ -55,7 +52,6 @@ const Stats = ({stats}) => {
             </Col>
             <Col className="col-12 col-lg-6 col-xl-3 mb-4">
                 <div className="mx-4 py-4" style={{
-                    background: "black",
                     border: "3px solid white"
                 }}>
                     <h3>Volume Traded</h3>

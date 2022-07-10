@@ -26,7 +26,7 @@ const Faq = () => {
     };
 
     const styles = {
-        bgColor: 'black',
+        bgColor: '#dba17b',
         titleTextColor: "white",
         rowTitleColor: "white",
         rowContentColor: 'white',
