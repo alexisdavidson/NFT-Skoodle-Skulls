@@ -1,6 +1,9 @@
 .App {
   text-align: center;
-  background-image: linear-gradient(to bottom right, #dba17b, #c99281);
+  /* background-image: linear-gradient(to bottom right, #dba17b, #c99281); */
+  background-image: url("./images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .App-logo {
@@ -15,7 +18,7 @@
 }
 
 .App-header {
-  background-image: linear-gradient(to bottom right, #dba17b, #c99281);
+  /* background-image: linear-gradient(to bottom right, #dba17b, #c99281); */
   /* background-color: black; */
   min-height: 100vh;
   display: flex;
@@ -24,6 +27,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+body {
 }
 
 .App-link {
