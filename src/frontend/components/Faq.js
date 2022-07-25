@@ -20,7 +20,7 @@ const Faq = () => {
             },
             {
                 title: <span style={{fontWeight: "bold"}}>What is the price?</span>,
-                content: "0.02 for WL holders, 0.04 for presale, 0.05 for public sale. Each person can mint up to 5 skoodles.",
+                content: "0.01 for WL holders, 0.03 for presale, 0.03 for public sale. Each person can mint up to 5 skoodles.",
             },
         ],
     };
